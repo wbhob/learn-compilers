@@ -1,4 +1,4 @@
-# number-sequence
+# learn-compilers
 
 This is a coding exercise to help me (and you) understand the basics of writing programming languages. The exercise is to write a program that parses programs written in a simple language and then executes them, returning the resulting string of numbers. In doing so, you will learn the basics of lexing, parsing, and executing programs. You'll build a basic compiler and interpreter that generates a list of tokens, parses them into an abstract syntax tree, and then executes the resulting instructions.
 
