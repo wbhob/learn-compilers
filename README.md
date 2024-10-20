@@ -16,7 +16,7 @@ The base case for the language is a sequence of numbers. For example:
 
 This is a sequence of 6 numbers. It represents a delay of 2 seconds, followed by a delay of 1 second, followed by a delay of 1 second, followed by 2 seconds, then 2 seconds, then 1 second.
 
-The language allows you to condense this sequence into a more compact form using a few different operators. For example, you can use the `loop` operator to repeat a sequence multiple times. For example:
+The language allows you to condense this sequence into a more compact form using a few different operators. For example, you can use the `loop` operator to repeat a sequence multiple times. 
 
 ```
 3x2, 1, 2x2, 1x2, 2
@@ -24,7 +24,7 @@ The language allows you to condense this sequence into a more compact form using
 
 This is equivalent to the sequence `3, 3, 1, 2, 2, 1, 1, 2`.
 
-You can also group numbers together using parentheses. For example:
+You can also group numbers together using parentheses. 
 
 ```
 (2, 1, 1), 2, 2, 1
@@ -32,7 +32,7 @@ You can also group numbers together using parentheses. For example:
 
 This is equivalent to the sequence `2, 1, 1, 2, 2, 1`.
 
-By combining these operators, you can create more complex sequences. For example:
+By combining these operators, you can create more complex sequences. 
 
 ```
 (3x2, 1)x2, 1x2, 2
@@ -40,7 +40,7 @@ By combining these operators, you can create more complex sequences. For example
 
 This is equivalent to the sequence `3, 3, 1, 3, 3, 1, 1, 1, 2`.
 
-You can also nest parentheses and operators to create more complex sequences. For example:
+You can also nest parentheses and operators to create more complex sequences. 
 
 ```
 ((3x2, 1)x2, 1x2)x2, 2
@@ -48,7 +48,7 @@ You can also nest parentheses and operators to create more complex sequences. Fo
 
 This is equivalent to the sequence `3, 3, 1, 3, 3, 1, 1, 1, 3, 3, 1, 3, 3, 1, 1, 1, 2`.
 
-It should also support decimals. For example:
+It should also support decimals. 
 
 ```
 1.5x2, 1
