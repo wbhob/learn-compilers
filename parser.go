@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 // ASTNode represents a node in the Abstract Syntax Tree
 // It's a flexible structure that can represent any element in our language
 type ASTNode struct {
@@ -29,8 +31,13 @@ func parseSequence(tokens []Token) *ASTNode {
 	}
 
 	// If there are no tokens, return an empty sequence
-	if len(tokens) == 0 {
+	if len(tokens) == 0 || tokens[0].Type == EOF {
 		return sequence
+	}
+
+	// The sequence must start with a NUMBER or a LPAREN
+	if tokens[0].Type != NUMBER && tokens[0].Type != LPAREN {
+		panic(fmt.Sprintf("Unexpected token '%s' at the beginning of the sequence", tokens[0].Type))
 	}
 
 	// Initialize variables to keep track of the current element and parenthesis nesting
@@ -47,34 +54,39 @@ func parseSequence(tokens []Token) *ASTNode {
 			nextToken = Token{Type: EOF}
 		}
 
-		// Validate sequence structure
-		// Ensure that two numbers are not adjacent without a comma
-		if token.Type == NUMBER && nextToken.Type == NUMBER {
-			panic("Invalid sequence: elements must be separated by commas")
-		}
-
 		// Handle different token types
 		switch token.Type {
 		case LPAREN:
 			parenthesisCount++
-			// Ensure a comma doesn't immediately follow an opening parenthesis
-			if nextToken.Type == COMMA {
-				panic("Invalid sequence: comma cannot follow left parenthesis")
+			// LPAREN can only be followed by a NUMBER or another LPAREN
+			if nextToken.Type != NUMBER && nextToken.Type != LPAREN {
+				panic(fmt.Sprintf("Unexpected token '%s' after left parenthesis", nextToken.Type))
 			}
 		case RPAREN:
 			parenthesisCount--
-			// Ensure a number doesn't immediately follow a closing parenthesis
-			if nextToken.Type == NUMBER {
-				panic("Invalid sequence: number cannot follow right parenthesis")
-			}
-			// Ensure two left parentheses are not in a row
-			if nextToken.Type == LPAREN {
-				panic("Invalid sequence: two left parentheses in a row")
+			// RPAREN can only be followed by a comma, another RPAREN, EOF, or X
+			if nextToken.Type != COMMA && nextToken.Type != RPAREN && nextToken.Type != EOF && nextToken.Type != X {
+				panic(fmt.Sprintf("Unexpected token '%s' after right parenthesis", nextToken.Type))
 			}
 		case COMMA:
-			// Ensure two commas are not in a row
-			if nextToken.Type == COMMA {
-				panic("Invalid sequence: two commas in a row")
+			// COMMA can only be followed by a NUMBER or a LPAREN
+			if nextToken.Type != NUMBER && nextToken.Type != LPAREN {
+				panic(fmt.Sprintf("Unexpected token '%s' after comma", nextToken.Type))
+			}
+		case NUMBER:
+			// NUMBER can only be followed by a comma, RPAREN, EOF, or X
+			if nextToken.Type != COMMA && nextToken.Type != RPAREN && nextToken.Type != EOF && nextToken.Type != X {
+				panic(fmt.Sprintf("Unexpected token '%s' after number", nextToken.Type))
+			}
+		case X:
+			// X can only be followed by a NUMBER
+			if nextToken.Type != NUMBER {
+				panic(fmt.Sprintf("Unexpected token '%s' after 'x'", nextToken.Type))
+			}
+		case EOF:
+			// EOF can only be followed by EOF
+			if nextToken.Type != EOF {
+				panic(fmt.Sprintf("Unexpected token '%s' after EOF", nextToken.Type))
 			}
 		}
 

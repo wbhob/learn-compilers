@@ -74,6 +74,8 @@ func TestParseNumberSequenceShorthand(t *testing.T) {
 				"(1, 2, 3)2, (4, 5)x2",
 				"(((1, 2x2)x2)x2",
 				"((1, 2)x2)x2)x2",
+				"(x2)",
+				"x2",
 			}
 
 			for _, input := range invalidInputs {
