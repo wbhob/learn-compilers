@@ -176,6 +176,13 @@ The solution for the interpreter is in the `interpreter.go` file. Try implementi
 
 Tests are in the `main_test.go` file for golang. You can run them from the command line using `make test` or just `make`. You can get started by copying the `stubs.go` file to `main.go` and implementing the missing functions, as well as any functions you need. This foundational concept is portable to any language, so you can use AI to translate the code and tests into your favorite language.
 
+## Optimizations
+
+- [4c4f07e417bc81224d2d739cc4a45255ad648ab5] Use allowlists instead of denylists to validate token sequences.
+- The parser could be optimized to avoid recursion by using an iterative approach.
+- The interpreter could be optimized to avoid recursion by using an iterative approach.
+- Integers and floats could be parsed separately to avoid using them as loop counts.
+
 ## Acknowledgements
 
 Thank you to [Caleb Miller](https://github.com/MilllerTime) for the inspiration and guidance in building this exercise, as well as providing the test cases.# learn-compilers
