@@ -48,13 +48,13 @@ You can also nest parentheses and operators to create more complex sequences.
 
 This is equivalent to the sequence `3, 3, 1, 3, 3, 1, 1, 1, 3, 3, 1, 3, 3, 1, 1, 1, 2`.
 
-It should also support decimals. 
+It should also support decimals and negative numbers. 
 
 ```
-1.5x2, 1
+1.5x2, -1
 ```
 
-This is equivalent to the sequence `1.5, 1.5, 1`.
+This is equivalent to the sequence `1.5, 1.5, -1`.
 
 ## Language Grammar
 
@@ -65,10 +65,11 @@ The language grammar is as follows:
 <element> ::= <number> | <group> | <loop>
 <group> ::= "(" <sequence> ")"
 <loop> ::= <element> "x" <integer>
-<number> ::= <integer> | <decimal>
+<number> ::= <integer> | <decimal> | <sign> <integer> | <sign> <decimal>
 <integer> ::= <digit>+
 <decimal> ::= <digit>+ "." <digit>+
 <digit> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+<sign> ::= "-"
 ```
 
 In laymans terms, this translates to:
@@ -91,7 +92,7 @@ The language tokens are the smallest units of the language. For example, the tok
 The tokens are:
 
 ```
-<token> ::= <number> | "x" | "," | "(" | ")"
+<token> ::= <number> | "x" | "," | "(" | ")" | "-" | "."
 ```
 
 That means when we start to build the list of tokens, we will look for a number, an `x`, a comma, a left parenthesis, or a right parenthesis. Every other character is either ignored or invalid.
