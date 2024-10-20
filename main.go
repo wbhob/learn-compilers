@@ -15,3 +15,7 @@ func ValidateNumberSequenceShorthand(input string) error {
 	parseSequence(tokens)
 	return nil
 }
+
+func main() {
+	fmt.Println("Run the test cases with `make test`.")
+}
