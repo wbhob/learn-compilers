@@ -178,7 +178,7 @@ Tests are in the `main_test.go` file for golang. You can run them from the comma
 
 ## Optimizations
 
-- https://github.com/wbhob/learn-compilers/commit/4c4f07e417bc81224d2d739cc4a45255ad648ab5 Use allowlists instead of denylists to validate token sequences.
+- 4c4f07e417bc81224d2d739cc4a45255ad648ab5 Use allowlists instead of denylists to validate token sequences.
 - The parser could be optimized to avoid recursion by using an iterative approach.
 - The interpreter could be optimized to avoid recursion by using an iterative approach.
 - Integers and floats could be parsed separately to avoid using them as loop counts.
