@@ -185,4 +185,4 @@ Tests are in the `main_test.go` file for golang. You can run them from the comma
 
 ## Acknowledgements
 
-Thank you to [Caleb Miller](https://github.com/MilllerTime) for the inspiration and guidance in building this exercise, as well as providing the test cases.# learn-compilers
+Thank you to [Caleb Miller](https://github.com/MilllerTime) for the inspiration and guidance in building this exercise, as well as providing the test cases.
